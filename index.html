@@ -116,10 +116,17 @@
               <span class="button-icon" aria-hidden="true">“</span>
               BibTeX
             </a>
-            <a class="button button-contact" href="mailto:zhuxiuyuan22@mails.ucas.edu.cn">
+            <button
+              class="button button-contact"
+              type="button"
+              data-copy-email
+              data-email="zhuxiuyuan22@mails.ucas.edu.cn"
+              aria-label="Copy contact email address"
+            >
               <span class="button-icon" aria-hidden="true">@</span>
-              Contact
-            </a>
+              <span data-contact-label>Contact</span>
+            </button>
+            <span class="sr-only" data-email-status role="status" aria-live="polite"></span>
           </div>
 
           <div class="token-stage" aria-label="Example of hierarchical coordinate tokenization">

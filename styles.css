@@ -371,6 +371,8 @@ pre {
   background: var(--orange-soft);
   border-color: #efbf91;
   box-shadow: 0 7px 22px rgba(171, 80, 11, 0.1);
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .button-contact:hover {
