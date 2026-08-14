@@ -371,8 +371,6 @@ pre {
   background: var(--orange-soft);
   border-color: #efbf91;
   box-shadow: 0 7px 22px rgba(171, 80, 11, 0.1);
-  font-family: inherit;
-  cursor: pointer;
 }
 
 .button-contact:hover {
@@ -1065,6 +1063,79 @@ tbody tr:nth-child(even) {
   margin-right: 5px;
 }
 
+.contact-section {
+  background: var(--blue-50);
+}
+
+.contact-address {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--blue-950);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 46px rgba(7, 31, 57, 0.07);
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.contact-address:hover {
+  transform: translateY(-2px);
+  border-color: #efbf91;
+  box-shadow: 0 20px 52px rgba(7, 31, 57, 0.1);
+}
+
+.contact-address:focus-visible {
+  outline: 3px solid rgba(43, 123, 183, 0.34);
+  outline-offset: 3px;
+}
+
+.contact-address-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: #8c450b;
+  background: var(--orange-soft);
+  border: 1px solid #efbf91;
+  border-radius: 12px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+}
+
+.contact-address-copy {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.contact-address-copy small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.contact-address-copy strong {
+  overflow-wrap: anywhere;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+}
+
+.contact-address-action {
+  margin-left: auto;
+  flex: 0 0 auto;
+  color: var(--blue-700);
+  font-size: 13px;
+  font-weight: 700;
+}
+
 .site-footer {
   padding: 42px 0;
   color: #a8bccd;
@@ -1242,6 +1313,21 @@ tbody tr:nth-child(even) {
   .button {
     min-height: 45px;
     padding: 10px 15px;
+  }
+
+  .contact-address {
+    padding: 18px;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .contact-address-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact-address-action {
+    display: none;
   }
 
   .token-stage {

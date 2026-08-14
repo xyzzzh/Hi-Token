@@ -35,9 +35,6 @@ updateHeader();
 const copyButton = document.querySelector("[data-copy-button]");
 const copyLabel = document.querySelector("[data-copy-label]");
 const bibtex = document.querySelector("#bibtex code");
-const emailButton = document.querySelector("[data-copy-email]");
-const emailLabel = document.querySelector("[data-contact-label]");
-const emailStatus = document.querySelector("[data-email-status]");
 
 const copyText = async (text) => {
   if (navigator.clipboard?.writeText) {
@@ -76,27 +73,4 @@ copyButton?.addEventListener("click", async () => {
   } catch {
     copyLabel.textContent = "Select text to copy";
   }
-});
-
-let emailResetTimer;
-
-emailButton?.addEventListener("click", async () => {
-  const email = emailButton.dataset.email;
-  if (!email || !emailLabel) return;
-
-  window.clearTimeout(emailResetTimer);
-
-  try {
-    await copyText(email);
-    emailLabel.textContent = "Copied!";
-    if (emailStatus) emailStatus.textContent = `Email copied: ${email}`;
-  } catch {
-    emailLabel.textContent = "Copy failed";
-    if (emailStatus) emailStatus.textContent = "Unable to copy the email address";
-  }
-
-  emailResetTimer = window.setTimeout(() => {
-    emailLabel.textContent = "Contact";
-    if (emailStatus) emailStatus.textContent = "";
-  }, 1800);
 });
