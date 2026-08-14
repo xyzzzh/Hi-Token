@@ -136,35 +136,14 @@ pre {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  max-width: 580px;
   color: var(--blue-950);
   font-family: "Manrope", sans-serif;
+  font-size: 14px;
   font-weight: 800;
+  line-height: 1.25;
   text-decoration: none;
   letter-spacing: -0.02em;
-}
-
-.brand-mark {
-  display: grid;
-  grid-template-columns: repeat(2, 18px);
-  gap: 2px;
-}
-
-.brand-mark span {
-  display: grid;
-  width: 18px;
-  height: 24px;
-  place-items: center;
-  color: white;
-  background: var(--blue-700);
-  border-radius: 5px;
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.brand-mark span:last-child {
-  background: var(--orange);
 }
 
 .site-nav {
@@ -267,25 +246,6 @@ pre {
   position: relative;
   z-index: 1;
   text-align: center;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 20px;
-  color: var(--blue-700);
-  font-family: "Manrope", sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.eyebrow span {
-  width: 22px;
-  height: 2px;
-  background: var(--orange);
 }
 
 .hero h1 {
@@ -1127,6 +1087,11 @@ tbody tr:nth-child(even) {
 }
 
 @media (max-width: 920px) {
+  .brand {
+    max-width: calc(100% - 56px);
+    font-size: 13px;
+  }
+
   .site-nav {
     position: fixed;
     top: 72px;
