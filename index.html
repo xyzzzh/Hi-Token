@@ -189,12 +189,16 @@
                 <span class="card-tag">Flat tokenization</span>
                 <span class="type-count">1,000 types</span>
               </div>
-              <div class="coordinate-pair">
+              <div class="coordinate-pair" aria-label="Coordinates 323 and 324 differ by one but use independent token types">
                 <code>&lt;323&gt;</code>
-                <span aria-hidden="true">≠</span>
+                <span class="coordinate-relation" aria-hidden="true">
+                  <span>Numeric distance: 1</span>
+                  <i></i>
+                  <small>No shared token structure</small>
+                </span>
                 <code>&lt;324&gt;</code>
               </div>
-              <p>Nearby positions share no representation, and the same vocabulary must implicitly learn both axes.</p>
+              <p>Numerically adjacent positions use independent atomic tokens, and the same vocabulary must implicitly learn both axes.</p>
             </article>
 
             <article class="comparison-card hi-card">
