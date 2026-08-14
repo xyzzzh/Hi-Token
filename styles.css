@@ -581,13 +581,13 @@ pre {
 }
 
 .comparison-card {
-  padding: 30px;
+  padding: 26px;
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
 }
 
 .comparison-card p {
-  margin: 24px 0 0;
+  margin: 16px 0 0;
   color: var(--muted);
 }
 
@@ -625,12 +625,13 @@ pre {
 }
 
 .coordinate-pair {
-  min-height: 106px;
-  margin-top: 22px;
-  display: flex;
+  min-height: 82px;
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: auto 64px auto;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 16px;
 }
 
 .coordinate-pair code {
@@ -643,14 +644,17 @@ pre {
 }
 
 .coordinate-relation {
+  width: 64px;
   color: #8c98a3;
-  font-size: 30px;
+  font-family: "Apple Symbols", "Segoe UI Symbol", sans-serif;
+  font-size: 56px;
   line-height: 1;
+  text-align: center;
 }
 
 .coordinate-breakdown {
-  min-height: 106px;
-  margin-top: 22px;
+  min-height: 82px;
+  margin-top: 14px;
   display: grid;
   gap: 8px;
   align-content: center;
@@ -1174,12 +1178,18 @@ tbody tr:nth-child(even) {
   }
 
   .coordinate-pair {
-    gap: 10px;
+    grid-template-columns: auto 46px auto;
+    gap: 8px;
   }
 
   .coordinate-pair code {
     padding: 10px 12px;
     font-size: 18px;
+  }
+
+  .coordinate-relation {
+    width: 46px;
+    font-size: 42px;
   }
 
   .container,
