@@ -642,9 +642,29 @@ pre {
   font-size: 22px;
 }
 
-.coordinate-pair span {
-  color: #a3adb7;
-  font-size: 28px;
+.coordinate-relation {
+  width: 150px;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  color: #667684;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  text-align: center;
+}
+
+.coordinate-relation > span,
+.coordinate-relation small {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.coordinate-relation i {
+  width: 100%;
+  border-top: 2px dashed #aeb8c1;
+}
+
+.coordinate-relation small {
+  color: #8b5f42;
 }
 
 .coordinate-breakdown {
@@ -1170,6 +1190,24 @@ tbody tr:nth-child(even) {
 @media (max-width: 700px) {
   body {
     font-size: 17px;
+  }
+
+  .coordinate-pair {
+    gap: 10px;
+  }
+
+  .coordinate-pair code {
+    padding: 10px 12px;
+    font-size: 18px;
+  }
+
+  .coordinate-relation {
+    width: 110px;
+  }
+
+  .coordinate-relation > span,
+  .coordinate-relation small {
+    font-size: 9px;
   }
 
   .container,
