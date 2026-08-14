@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Hi-Token introduces hierarchical, axis-specific coordinate tokens for generative visual grounding, together with geometry-aware post-training."
+    />
+    <meta
+      name="keywords"
+      content="Hi-Token, Hi-R1, visual grounding, coordinate tokenization, vision-language models, GRPO"
+    />
+    <meta name="theme-color" content="#0b3158" />
+    <link rel="canonical" href="https://xyzzzh.github.io/Hi-Token/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://xyzzzh.github.io/Hi-Token/" />
+    <meta property="og:title" content="Hi-Token | Hierarchical Coordinate Tokenization" />
+    <meta
+      property="og:description"
+      content="Structured coordinate generation for vision-language models, from axis-specific digit tokens to geometry-aware post-training."
+    />
+    <meta property="og:image" content="https://xyzzzh.github.io/Hi-Token/assets/framework.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hi-Token | Hierarchical Coordinate Tokenization" />
+    <meta
+      name="twitter:description"
+      content="Structured coordinate generation for vision-language models, from axis-specific digit tokens to geometry-aware post-training."
+    />
+    <meta name="twitter:image" content="https://xyzzzh.github.io/Hi-Token/assets/framework.png" />
+    <title>Hi-Token | Hierarchical Coordinate Tokenization for Generative Visual Grounding</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Source+Sans+3:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <div class="nav-shell">
+        <a class="brand" href="#top" aria-label="Hi-Token home">
+          <span class="brand-mark" aria-hidden="true">
+            <span>H</span><span>T</span>
+          </span>
+          <span>Hi-Token</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#examples">Examples</a>
+          <a href="#citation">Citation</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+
+        <div class="container hero-content">
+          <div class="eyebrow"><span></span> Generative Visual Grounding</div>
+          <h1>
+            <span class="title-accent">Hi-Token:</span>
+            Hierarchical Coordinate Tokenization for Generative Visual Grounding
+          </h1>
+
+          <p class="hero-lead">
+            Structured coordinate generation for vision-language models, from axis-specific digit tokens to
+            geometry-aware post-training.
+          </p>
+
+          <div class="authors" aria-label="Authors">
+            <span>Xiuyuan Zhu<sup>1,2</sup></span>
+            <span>Ke Lu<sup>1,3</sup></span>
+            <span>Kun Dong<sup>1,2</sup></span>
+            <span>Siwen Jiao<sup>4</sup></span>
+            <span>Hao Wu<sup>1,2</sup></span>
+            <span>Zijin Du<sup>1</sup></span>
+            <span>Shun Mao<sup>1,2</sup></span>
+            <span>Dongming Zhang<sup>2</sup></span>
+            <span>Jian Xue<sup>1,*</sup></span>
+          </div>
+
+          <div class="affiliations">
+            <p><sup>1</sup> University of Chinese Academy of Sciences</p>
+            <p><sup>2</sup> State Key Laboratory of Communication Content Cognition</p>
+            <p><sup>3</sup> Peng Cheng Laboratory</p>
+            <p><sup>4</sup> National University of Singapore</p>
+          </div>
+
+          <div class="hero-actions" aria-label="Project links">
+            <a class="button button-primary" href="https://arxiv.org/abs/2608.03471" target="_blank" rel="noopener">
+              <span class="button-icon" aria-hidden="true">A</span>
+              arXiv
+            </a>
+            <a class="button button-secondary" href="https://arxiv.org/pdf/2608.03471" target="_blank" rel="noopener">
+              <span class="button-icon" aria-hidden="true">↓</span>
+              Paper PDF
+            </a>
+            <a class="button button-secondary" href="https://modelscope.cn/models/xyzzzh/Hi-Token" target="_blank" rel="noopener">
+              <span class="button-icon model-icon" aria-hidden="true">M</span>
+              Model
+            </a>
+            <a class="button button-quiet" href="#citation">
+              <span class="button-icon" aria-hidden="true">“</span>
+              BibTeX
+            </a>
+          </div>
+
+          <div class="token-stage" aria-label="Example of hierarchical coordinate tokenization">
+            <div class="token-stage-header">
+              <div>
+                <span class="stage-kicker">A coordinate becomes a short, structured sequence</span>
+                <strong>478</strong>
+              </div>
+              <span class="stage-axis">x-axis</span>
+            </div>
+            <div class="token-flow">
+              <div class="flat-token">
+                <span class="token-label">Flat</span>
+                <code>&lt;478&gt;</code>
+              </div>
+              <div class="flow-arrow" aria-hidden="true">→</div>
+              <div class="hierarchy-tokens">
+                <div class="digit-token digit-hundreds">
+                  <span>Hundreds</span>
+                  <code>&lt;x_hundreds_4&gt;</code>
+                </div>
+                <div class="digit-token digit-tens">
+                  <span>Tens</span>
+                  <code>&lt;x_tens_7&gt;</code>
+                </div>
+                <div class="digit-token digit-ones">
+                  <span>Ones</span>
+                  <code>&lt;x_ones_8&gt;</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section abstract-section" id="abstract">
+        <div class="container narrow">
+          <div class="section-heading centered">
+            <span class="section-index">01</span>
+            <h2>Abstract</h2>
+          </div>
+          <p class="abstract-copy">
+            Generative Vision-Language Models commonly treat bounding-box coordinates as independent output
+            symbols, leaving numerical order and axis semantics implicit. Hi-Token encodes each coordinate with
+            axis-specific tokens for the hundreds, tens, and ones digits, adding coarse-to-fine structure and
+            increasing token reuse without changing the VLM architecture. Hi-GAR complements this representation
+            with geometry-aware GRPO rewards based on box overlap and coordinate accuracy at multiple scales.
+            Controlled comparisons show that Hi-Token improves localization throughout the evaluated IoU range,
+            while Hi-GAR further reduces low-overlap predictions. Experiments on three VLM backbones and the
+            RefCOCO family demonstrate consistent gains across models and benchmarks.
+          </p>
+        </div>
+      </section>
+
+      <section class="section problem-section" id="representation">
+        <div class="container">
+          <div class="section-heading split-heading">
+            <div>
+              <span class="section-index">02</span>
+              <h2>Coordinates should carry structure</h2>
+            </div>
+            <p>
+              Flat location tokens make nearby values unrelated symbols. Hi-Token exposes numerical scale and axis
+              roles through a compact, exactly parseable output vocabulary.
+            </p>
+          </div>
+
+          <div class="comparison-grid">
+            <article class="comparison-card flat-card">
+              <div class="card-topline">
+                <span class="card-tag">Flat tokenization</span>
+                <span class="type-count">1,000 types</span>
+              </div>
+              <div class="coordinate-pair">
+                <code>&lt;323&gt;</code>
+                <span aria-hidden="true">≠</span>
+                <code>&lt;324&gt;</code>
+              </div>
+              <p>Nearby positions share no representation, and the same vocabulary must implicitly learn both axes.</p>
+            </article>
+
+            <article class="comparison-card hi-card">
+              <div class="card-topline">
+                <span class="card-tag">Hi-Token</span>
+                <span class="type-count">60 types</span>
+              </div>
+              <div class="coordinate-breakdown" aria-label="323 and 324 share hundreds and tens tokens">
+                <div>
+                  <code class="shared">x_hundreds_3</code>
+                  <code class="shared">x_tens_2</code>
+                  <code>x_ones_3</code>
+                </div>
+                <div>
+                  <code class="shared">x_hundreds_3</code>
+                  <code class="shared">x_tens_2</code>
+                  <code>x_ones_4</code>
+                </div>
+              </div>
+              <p>Neighboring coordinates reuse coarse tokens while preserving the fine change in the ones digit.</p>
+            </article>
+          </div>
+
+          <div class="feature-row">
+            <div class="feature-item">
+              <span class="feature-number">12</span>
+              <div><strong>tokens per box</strong><span>Three ordered decisions for each coordinate</span></div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-number">60</span>
+              <div><strong>coordinate types</strong><span>Separate x- and y-axis vocabularies</span></div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-number">50×</span>
+              <div><strong>mean supervision</strong><span>More observations per coordinate-token type</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section method-section" id="method">
+        <div class="container">
+          <div class="section-heading split-heading light-heading">
+            <div>
+              <span class="section-index">03</span>
+              <h2>Hi-Token and Hi-GAR</h2>
+            </div>
+            <p>
+              Hi-Token changes the coordinate representation. Hi-GAR supplies geometry-aware feedback during
+              post-training and adds no inference-time module.
+            </p>
+          </div>
+
+          <div class="method-notes">
+            <article>
+              <span class="note-index">A</span>
+              <h3>Hierarchical tokenization</h3>
+              <p>Factorize each coordinate into axis-specific hundreds, tens, and ones tokens.</p>
+            </article>
+            <article>
+              <span class="note-index">B</span>
+              <h3>Geometry-aware reward</h3>
+              <p>Combine box IoU with coordinate checks at coarse, medium, and fine tolerances.</p>
+            </article>
+            <article>
+              <span class="note-index">C</span>
+              <h3>Validity gating</h3>
+              <p>Apply coordinate-level rewards only after the prediction has meaningful overlap.</p>
+            </article>
+          </div>
+
+          <figure class="paper-figure framework-figure">
+            <img
+              src="assets/framework.png"
+              alt="Overview of hierarchical coordinate tokenization and the Hi-GAR geometry-aware reward used with GRPO"
+              loading="lazy"
+            />
+            <figcaption>
+              Hi-Token produces a structured 12-token box sequence; Hi-GAR combines format, IoU, hierarchical
+              coordinate, and threshold rewards behind a validity gate.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section results-section" id="results">
+        <div class="container">
+          <div class="section-heading split-heading">
+            <div>
+              <span class="section-index">04</span>
+              <h2>Results across the IoU range</h2>
+            </div>
+            <p>
+              Under matched settings, Hi-Token improves target identification and boundary alignment. Hi-R1 remains
+              compact, using a 3B backbone and 80k grounding samples.
+            </p>
+          </div>
+
+          <div class="result-summary" aria-label="Key results on RefCOCO">
+            <article>
+              <span>mIoU</span>
+              <strong>84.3</strong>
+              <small>Hi-R1 on RefCOCO</small>
+            </article>
+            <article>
+              <span>P@0.5</span>
+              <strong>93.1</strong>
+              <small>Hi-R1 on RefCOCO</small>
+            </article>
+            <article>
+              <span>P@0.95</span>
+              <strong>33.4</strong>
+              <small>Hi-R1 on RefCOCO</small>
+            </article>
+            <article>
+              <span>Backbones</span>
+              <strong>3</strong>
+              <small>Positive representation gains</small>
+            </article>
+          </div>
+
+          <div class="results-layout">
+            <figure class="paper-figure results-figure">
+              <img
+                src="assets/analysis.png"
+                alt="Analysis of token supervision density, cross-backbone transfer, and stage-wise IoU distribution"
+                loading="lazy"
+              />
+              <figcaption>
+                Denser token supervision, transfer across three VLM backbones, and stage-wise changes across the IoU
+                distribution.
+              </figcaption>
+            </figure>
+
+            <div class="result-table-wrap">
+              <div class="table-title">
+                <span>RefCOCO family</span>
+                <strong>Comparison with specialist VLMs</strong>
+              </div>
+              <div class="table-scroll" tabindex="0" aria-label="Scrollable result table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th rowspan="2">Method</th>
+                      <th colspan="3">RefCOCO</th>
+                      <th colspan="3">RefCOCO+</th>
+                      <th colspan="3">RefCOCOg</th>
+                    </tr>
+                    <tr>
+                      <th>mIoU</th><th>P@.5</th><th>P@.95</th>
+                      <th>mIoU</th><th>P@.5</th><th>P@.95</th>
+                      <th>mIoU</th><th>P@.5</th><th>P@.95</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>VLM-R1</td>
+                      <td>63.1</td><td>69.8</td><td>14.4</td>
+                      <td>64.4</td><td>71.5</td><td>13.6</td>
+                      <td>66.7</td><td>73.4</td><td>13.7</td>
+                    </tr>
+                    <tr>
+                      <td>Rex-Omni</td>
+                      <td>81.9</td><td>88.2</td><td>31.1</td>
+                      <td>77.5</td><td>83.4</td><td class="best-alt">33.3</td>
+                      <td>77.3</td><td>86.1</td><td>36.3</td>
+                    </tr>
+                    <tr class="ours-row">
+                      <td>Hi-R1</td>
+                      <td>84.3</td><td>93.1</td><td>33.4</td>
+                      <td>81.8</td><td>89.9</td><td>32.9</td>
+                      <td>80.3</td><td>86.4</td><td>39.4</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="table-note">All values are percentages. The highlighted row is our final Hi-R1 model.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section examples-section" id="examples">
+        <div class="container">
+          <div class="section-heading split-heading">
+            <div>
+              <span class="section-index">05</span>
+              <h2>Qualitative grounding</h2>
+            </div>
+            <p>
+              Hierarchical coordinate generation produces tighter boxes in crowded scenes, while Hi-GAR refines
+              boundaries after supervised fine-tuning.
+            </p>
+          </div>
+
+          <div class="example-grid">
+            <figure class="paper-figure">
+              <img
+                src="assets/qualitative.png"
+                alt="Comparison of Base Model, Rex-Omni, Hi-R1, and ground-truth boxes for a zebra grounding example"
+                loading="lazy"
+              />
+              <figcaption>Hi-R1 isolates the referred zebra and closely matches the target box.</figcaption>
+            </figure>
+            <figure class="paper-figure">
+              <img
+                src="assets/refinement.png"
+                alt="Examples showing bounding-box refinement from Hi-Token SFT to Hi-R1"
+                loading="lazy"
+              />
+              <figcaption>Geometry-aware post-training tightens boundaries for different object types.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section analysis-section" id="analysis">
+        <div class="container">
+          <div class="section-heading split-heading light-heading">
+            <div>
+              <span class="section-index">06</span>
+              <h2>What the diagnostics show</h2>
+            </div>
+            <p>
+              The analysis separates representation effects, reward-stage refinement, digit-boundary behavior, and
+              scale-dependent coordinate sensitivity.
+            </p>
+          </div>
+
+          <figure class="paper-figure diagnostic-figure">
+            <img
+              src="assets/diagnostics.png"
+              alt="Analysis of digit-boundary effects, localization by object scale, and scale-dependent coordinate sensitivity"
+              loading="lazy"
+            />
+            <figcaption>
+              Hi-Token is stable near tens transitions; localization quality and coordinate sensitivity vary with
+              object scale.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section citation-section" id="citation">
+        <div class="container narrow">
+          <div class="section-heading centered">
+            <span class="section-index">07</span>
+            <h2>Citation</h2>
+            <p>If you find Hi-Token useful, please cite our paper.</p>
+          </div>
+
+          <div class="citation-box">
+            <button class="copy-button" type="button" data-copy-button aria-label="Copy BibTeX citation">
+              <span aria-hidden="true">⧉</span>
+              <span data-copy-label>Copy BibTeX</span>
+            </button>
+            <pre id="bibtex"><code>@article{zhu2026hitoken,
+  title   = {Hi-Token: Hierarchical Coordinate Tokenization for Generative Visual Grounding},
+  author  = {Zhu, Xiuyuan and Lu, Ke and Dong, Kun and Jiao, Siwen and Wu, Hao and Du, Zijin and Mao, Shun and Zhang, Dongming and Xue, Jian},
+  journal = {arXiv preprint arXiv:2608.03471},
+  year    = {2026}
+}</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>Hi-Token</strong>
+          <p>Hierarchical Coordinate Tokenization for Generative Visual Grounding</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://arxiv.org/abs/2608.03471" target="_blank" rel="noopener">Paper</a>
+          <a href="https://modelscope.cn/models/xyzzzh/Hi-Token" target="_blank" rel="noopener">Model</a>
+          <a href="mailto:xuejian@ucas.ac.cn">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
