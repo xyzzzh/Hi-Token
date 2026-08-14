@@ -35,6 +35,8 @@ updateHeader();
 const copyButton = document.querySelector("[data-copy-button]");
 const copyLabel = document.querySelector("[data-copy-label]");
 const bibtex = document.querySelector("#bibtex code");
+const contactCopyButton = document.querySelector("[data-copy-contact]");
+const contactCopyLabel = document.querySelector("[data-contact-copy-label]");
 
 const copyText = async (text) => {
   if (navigator.clipboard?.writeText) {
@@ -73,4 +75,24 @@ copyButton?.addEventListener("click", async () => {
   } catch {
     copyLabel.textContent = "Select text to copy";
   }
+});
+
+let contactResetTimer;
+
+contactCopyButton?.addEventListener("click", async () => {
+  const email = contactCopyButton.dataset.email;
+  if (!email || !contactCopyLabel) return;
+
+  window.clearTimeout(contactResetTimer);
+
+  try {
+    await copyText(email);
+    contactCopyLabel.textContent = "Copied!";
+  } catch {
+    contactCopyLabel.textContent = "Copy failed";
+  }
+
+  contactResetTimer = window.setTimeout(() => {
+    contactCopyLabel.textContent = "Copy";
+  }, 1800);
 });
