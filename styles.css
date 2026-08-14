@@ -366,6 +366,18 @@ pre {
   background: var(--blue-100);
 }
 
+.button-contact {
+  color: #8c450b;
+  background: var(--orange-soft);
+  border-color: #efbf91;
+  box-shadow: 0 7px 22px rgba(171, 80, 11, 0.1);
+}
+
+.button-contact:hover {
+  background: #ffe1c1;
+  border-color: var(--orange);
+}
+
 .button-icon {
   display: grid;
   width: 21px;
