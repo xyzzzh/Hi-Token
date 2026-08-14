@@ -1079,19 +1079,6 @@ tbody tr:nth-child(even) {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   box-shadow: 0 16px 46px rgba(7, 31, 57, 0.07);
-  text-decoration: none;
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-}
-
-.contact-address:hover {
-  transform: translateY(-2px);
-  border-color: #efbf91;
-  box-shadow: 0 20px 52px rgba(7, 31, 57, 0.1);
-}
-
-.contact-address:focus-visible {
-  outline: 3px solid rgba(43, 123, 183, 0.34);
-  outline-offset: 3px;
 }
 
 .contact-address-icon {
@@ -1128,12 +1115,34 @@ tbody tr:nth-child(even) {
   font-size: clamp(1rem, 2vw, 1.18rem);
 }
 
-.contact-address-action {
+.contact-copy-button {
+  min-width: 104px;
   margin-left: auto;
   flex: 0 0 auto;
+  padding: 9px 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   color: var(--blue-700);
+  background: var(--blue-50);
+  border: 1px solid #c7dce9;
+  border-radius: 999px;
+  font-family: inherit;
   font-size: 13px;
   font-weight: 700;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.contact-copy-button:hover {
+  transform: translateY(-1px);
+  background: var(--blue-100);
+  border-color: var(--blue-300);
+}
+
+.contact-copy-button:focus-visible {
+  outline: 3px solid rgba(43, 123, 183, 0.34);
+  outline-offset: 3px;
 }
 
 .site-footer {
@@ -1317,6 +1326,8 @@ tbody tr:nth-child(even) {
 
   .contact-address {
     padding: 18px;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
     align-items: flex-start;
     gap: 12px;
   }
@@ -1326,8 +1337,10 @@ tbody tr:nth-child(even) {
     height: 40px;
   }
 
-  .contact-address-action {
-    display: none;
+  .contact-copy-button {
+    grid-column: 2;
+    justify-self: start;
+    margin-left: 0;
   }
 
   .token-stage {
